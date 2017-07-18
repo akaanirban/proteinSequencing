@@ -1,1 +1,10 @@
-# Manisits protein sequencing stuff
+# Manisit's protein sequencing stuff
+
+Edit the `sequenceFile.conf` by adding sequences in newlines in the following order:
+
+`sequence_name=actual_sequence` , for example asample content in `sequenceFile.conf` might look like the following:
+
+`sequence1=MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHYREQIKRVKDSEDVPMVLVGNKCDLPSRTVDTKQAQELARSYGIPFIETSAKTRQGVDDAFYTLVREIRKHKEKMSKDGKKKKKKSRTRCTVM
+sequence2=MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHYREQIKRVKDSEDVPMVLVGNKCDLPSRTVDTKQAQDLARSYGIPFIETSAKTRQRVEDAFYTLVREIRQYRLKKISKEEKTPGCVKIKKCIIM`
+
+This will generate one text file and one CSV file for two sequences each. Names are self explanatory

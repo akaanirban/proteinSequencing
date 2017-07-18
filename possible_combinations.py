@@ -32,25 +32,26 @@ def writeToCSV(combinations, filename): #if you want csv
 
 
 if __name__ == '__main__':
-    file = open('sequenceFile.txt', 'r')
-    proteinSeq = file.read().strip()
-    file.close()
-    #proteinSeq = 'MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHYREQIKRVKDSEDVPMVLVGNKCDLPSRTVDTKQAQDLARSYGIPFIETSAKTRQRVEDAFYTLVREIRQYRLKKISKEEKTPGCVKIKKCIIM'
     validAlphabet = 'GALMFWKQESPVICYHRNDT'
-    allCombinations = list()
-    for i in range(len(proteinSeq)):
-        for letter in validAlphabet:
-            dummySeq = list(proteinSeq)
-            dummySeq[i] = letter
-            dummySeq = ''.join(dummySeq)
-            allCombinations.append(dummySeq)
-    totalGenerated = len(allCombinations)
-    print("Number of entries generated = ", totalGenerated)
-    name_of_generated_File = 'proteinSequence_'+ str(totalGenerated)
-    #generate text file
-    writeToTextFile(allCombinations, name_of_generated_File)
-    #generate CSV file
-    writeToCSV(allCombinations, name_of_generated_File)
+    file = open('sequenceFile.conf', 'r')
+    proteinSeq = file.read().strip().split('\n')
+    file.close()
+    for sequence in proteinSeq:
+        sequenceName, actualSequence = sequence.split('=')
+        allCombinations = list()
+        for i in range(len(actualSequence.strip())):
+            for letter in validAlphabet:
+                dummySeq = list(actualSequence.strip())
+                dummySeq[i] = letter
+                dummySeq = ''.join(dummySeq)
+                allCombinations.append(dummySeq)
+        totalGenerated = len(allCombinations)
+        print("\nNumber of entries generated for sequence: {} = {}".format(sequenceName,totalGenerated))
+        name_of_generated_File = 'proteinSequence_'+ sequenceName.strip() + '_'+ str(totalGenerated)
+        #generate text file
+        writeToTextFile(allCombinations, name_of_generated_File)
+        #generate CSV file
+        writeToCSV(allCombinations, name_of_generated_File)
 
     
 
