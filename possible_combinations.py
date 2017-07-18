@@ -33,7 +33,7 @@ def writeToCSV(combinations, filename): #if you want csv
 
 if __name__ == '__main__':
     file = open('sequenceFile.txt', 'r')
-    proteinSeq = file.read()
+    proteinSeq = file.read().strip()
     file.close()
     #proteinSeq = 'MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHYREQIKRVKDSEDVPMVLVGNKCDLPSRTVDTKQAQDLARSYGIPFIETSAKTRQRVEDAFYTLVREIRQYRLKKISKEEKTPGCVKIKKCIIM'
     validAlphabet = 'GALMFWKQESPVICYHRNDT'
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     #generate text file
     writeToTextFile(allCombinations, name_of_generated_File)
     #generate CSV file
-    #writeToCSV(allCombinations, name_of_generated_File)
+    writeToCSV(allCombinations, name_of_generated_File)
 
     
 
