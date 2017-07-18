@@ -23,7 +23,7 @@ def writeToTextFile(combinations, filename):  #if you want text file
 #==============================================================================
 def writeToCSV(combinations, filename): #if you want csv
     filename = filename + '.csv'
-    delimeter = ',' #enter the delimeter you want
+    delimeter = "," #enter the delimeter you want
     with open(filename, 'w') as myfile:
         wr = csv.writer(myfile,delimiter= delimeter, quoting=csv.QUOTE_NONE) 
         wr.writerow(combinations)
@@ -32,8 +32,10 @@ def writeToCSV(combinations, filename): #if you want csv
 
 
 if __name__ == '__main__':
-    proteinSeq = 'MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHYREQIKRVKDSEDVPMVLVGNKCDLPSRTVDTKQAQDLARSYGIPFIETSAKTRQRVEDAFYTLVREIRQYRLKKISKEEKTPGCVKIKKCIIM'
-    #proteinSeq = 'MTEYK'
+    file = open('sequenceFile.txt', 'r')
+    proteinSeq = file.read()
+    file.close()
+    #proteinSeq = 'MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHHYREQIKRVKDSEDVPMVLVGNKCDLPSRTVDTKQAQDLARSYGIPFIETSAKTRQRVEDAFYTLVREIRQYRLKKISKEEKTPGCVKIKKCIIM'
     validAlphabet = 'GALMFWKQESPVICYHRNDT'
     allCombinations = list()
     for i in range(len(proteinSeq)):
@@ -48,7 +50,8 @@ if __name__ == '__main__':
     #generate text file
     writeToTextFile(allCombinations, name_of_generated_File)
     #generate CSV file
-    writeToCSV(allCombinations, name_of_generated_File)
+    #writeToCSV(allCombinations, name_of_generated_File)
 
     
+
 
