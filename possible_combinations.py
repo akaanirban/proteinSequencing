@@ -5,7 +5,7 @@ Created on Mon Jul 17 22:36:32 2017
 @author: Anirban Das
 """
 import csv
-
+from textwrap import TextWrapper
 #==============================================================================
 # from itertools import product
 # stringReq = 'ABCDEFGH' #valid letters string
@@ -15,9 +15,13 @@ import csv
 #==============================================================================
 
 def writeToTextFile(combinations, filename):  #if you want text file
-    filename = filename + '.txt'
+    wrapper = TextWrapper(width=80)
+    filename = filename + '.fista'
     with open(filename, 'w') as myfile:
-        myfile.write(" ".join(combinations))
+        for element in combinations:
+            myfile.write(">{}\n".format(filename))
+            myfile.write("\n".join(wrapper.wrap(element)))
+            myfile.write("\n")
     print("Generated text file :", filename)
 
 #==============================================================================
