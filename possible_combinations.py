@@ -16,11 +16,12 @@ from textwrap import TextWrapper
 
 def writeToTextFile(combinations, filename):  #if you want text file
     wrapper = TextWrapper(width=80)
-    filename = filename + '.fista'
+    filename = filename + '.fasta'
     with open(filename, 'w') as myfile:
-        for element in combinations:
-            myfile.write(">{}\n".format(filename))
-            myfile.write("\n".join(wrapper.wrap(element)))
+        for element in range(len(combinations)):
+            myfile.write(">sequence_combination#{}\n"\
+                             .format(element))
+            myfile.write("\n".join(wrapper.wrap(combinations[element])))
             myfile.write("\n")
     print("Generated text file :", filename)
 
