@@ -52,6 +52,7 @@ if __name__ == '__main__':
                 allCombinations.append(dummySeq)
 
         uniqueCombinations = list(set(allCombinations)) #unique combinations
+        uniqueCombinations = sorted(uniqueCombinations) #sort the set
         totalUniqueGenerated = len(uniqueCombinations)  #number of unique combinations
         print("\nNumber of entries generated for sequence: {} = {}".format(sequenceName,totalUniqueGenerated))
         name_of_generated_File = 'proteinSequence_'+ sequenceName.strip() + '_'+ str(totalUniqueGenerated)
