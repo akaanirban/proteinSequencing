@@ -16,23 +16,23 @@ from textwrap import TextWrapper
 
 def writeToTextFile(combinations, filename):  #if you want text file
     wrapper = TextWrapper(width=80)
-    filename = filename + '.fasta'
-    with open(filename, 'w') as myfile:
+    filepath = 'Outputs/' + filename + '.fasta'
+    with open(filepath, 'w') as myfile:
         for element in range(len(combinations)):
             myfile.write(">sequence_combination#{}\n"\
                              .format(element))
             myfile.write("\n".join(wrapper.wrap(combinations[element])))
             myfile.write("\n")
-    print("Generated text file :", filename)
+    print("Generated text file :", filename+'.fasta')
 
 #==============================================================================
 def writeToCSV(combinations, filename): #if you want csv
-    filename = filename + '.csv'
+    filepath = 'Outputs/'+ filename + '.csv'
     delimeter = "," #enter the delimeter you want
-    with open(filename, 'w') as myfile:
+    with open(filepath, 'w') as myfile:
         wr = csv.writer(myfile,delimiter= delimeter, quoting=csv.QUOTE_NONE) 
         wr.writerow(combinations)
-    print("Generated CSV file :", filename)
+    print("Generated CSV file :", filename+'.csv')
 
 
 
@@ -50,13 +50,15 @@ if __name__ == '__main__':
                 dummySeq[i] = letter
                 dummySeq = ''.join(dummySeq)
                 allCombinations.append(dummySeq)
-        totalGenerated = len(allCombinations)
-        print("\nNumber of entries generated for sequence: {} = {}".format(sequenceName,totalGenerated))
-        name_of_generated_File = 'proteinSequence_'+ sequenceName.strip() + '_'+ str(totalGenerated)
+
+        uniqueCombinations = list(set(allCombinations)) #unique combinations
+        totalUniqueGenerated = len(uniqueCombinations)  #number of unique combinations
+        print("\nNumber of entries generated for sequence: {} = {}".format(sequenceName,totalUniqueGenerated))
+        name_of_generated_File = 'proteinSequence_'+ sequenceName.strip() + '_'+ str(totalUniqueGenerated)
         #generate text file
-        writeToTextFile(allCombinations, name_of_generated_File)
+        writeToTextFile(uniqueCombinations, name_of_generated_File)
         #generate CSV file
-        writeToCSV(allCombinations, name_of_generated_File)
+        writeToCSV(uniqueCombinations, name_of_generated_File)
 
     
 
